@@ -2,6 +2,8 @@ const express = require('express');
 const { 
   login, 
   register, 
+  registerFamilia,
+  debugRegisterFamilia,
   getCurrentUser, 
   logout, 
   refreshToken 
@@ -13,6 +15,8 @@ const router = express.Router();
 // Routes públiques
 router.post('/login', login);
 router.post('/register', register);
+router.post('/register-familia', registerFamilia);
+router.post('/debug-register', debugRegisterFamilia); // Debug temporal
 
 // Routes protegides
 router.get('/me', authenticateToken, getCurrentUser);

@@ -181,7 +181,7 @@ const startServer = async () => {
     
     // Sincronitzar models (només en desenvolupament)
     if (process.env.NODE_ENV === 'development') {
-      await syncDatabase(); // sense { alter: true }
+      await syncDatabase();
       console.log('✅ Models de base de dades sincronitzats');
     }
     

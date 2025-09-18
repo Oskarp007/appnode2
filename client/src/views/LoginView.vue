@@ -10,74 +10,114 @@
         Gestió Escolar
       </h2>
       <p class="mt-2 text-center text-sm text-slate-600">
-        Selecciona el teu perfil per accedir
+        Accedeix al teu compte
       </p>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="card">
-        <div class="card-body space-y-4">
-          <!-- Botons d'accés ràpid -->
-          <button @click="quickLogin('admin@admin.com')" 
-                  :disabled="isLoading"
-                  class="w-full btn-primary justify-start gap-3">
-            <span class="w-2 h-2 bg-white rounded-full"></span>
-            Admin
-          </button>
-          
-          <button @click="quickLogin('superadmin@edutech.com')" 
-                  :disabled="isLoading"
-                  class="w-full btn-primary justify-start gap-3 bg-purple-600 hover:bg-purple-700">
-            <span class="w-2 h-2 bg-white rounded-full"></span>
-            Super Admin
-          </button>
-          
-          <button @click="quickLogin('coordinador@edutech.com')" 
-                  :disabled="isLoading"
-                  class="w-full btn-primary justify-start gap-3 bg-indigo-600 hover:bg-indigo-700">
-            <span class="w-2 h-2 bg-white rounded-full"></span>
-            Coordinador
-          </button>
-          
-          <button @click="quickLogin('monitor@edutech.com')" 
-                  :disabled="isLoading"
-                  class="w-full btn-primary justify-start gap-3 bg-amber-500 hover:bg-amber-600">
-            <span class="w-2 h-2 bg-white rounded-full"></span>
-            Monitor
-          </button>
-          
-          <button @click="quickLogin('familia@edutech.com')" 
-                  :disabled="isLoading"
-                  class="w-full btn-primary justify-start gap-3 bg-rose-500 hover:bg-rose-600">
-            <span class="w-2 h-2 bg-white rounded-full"></span>
-            Família
-          </button>
-          
-          <div v-if="isLoading" class="flex justify-center py-2">
-            <div class="w-4 h-4 border-2 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
+        <div class="card-body space-y-6">
+          <form @submit.prevent="login" class="space-y-6">
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-700">
+                Correu electrònic
+              </label>
+              <div class="mt-1">
+                <input 
+                  id="email"
+                  v-model="form.email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                  class="appearance-none block w-full px-3 py-2 border border-slate-300 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                  placeholder="el-teu-email@exemple.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="password" class="block text-sm font-medium text-slate-700">
+                Contrasenya
+              </label>
+              <div class="mt-1">
+                <input 
+                  id="password"
+                  v-model="form.password"
+                  type="password"
+                  required
+                  autocomplete="current-password"
+                  class="appearance-none block w-full px-3 py-2 border border-slate-300 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                  placeholder="Introdueix la teva contrasenya"
+                />
+              </div>
+            </div>
+
+            <div>
+              <button 
+                type="submit"
+                :disabled="isLoading"
+                class="w-full btn-primary justify-center"
+              >
+                <div v-if="isLoading" class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                {{ isLoading ? 'Accedint...' : 'Iniciar sessió' }}
+              </button>
+            </div>
+          </form>
+
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-slate-300" />
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-white text-slate-500">o</span>
+            </div>
+          </div>
+
+          <div>
+            <button 
+              @click="showRegisterModal = true"
+              class="w-full btn-outline justify-center"
+            >
+              Registrar-se com a família
+            </button>
           </div>
           
-          <div v-if="error" class="text-sm text-red-600 text-center bg-red-50 p-2 rounded-lg">
+          <div v-if="error" class="text-sm text-red-600 text-center bg-red-50 p-3 rounded-lg">
             {{ error }}
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Modal de registre -->
+    <RegisterFamiliaModal 
+      :isVisible="showRegisterModal"
+      @close="showRegisterModal = false"
+      @registered="handleRegistered"
+    />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
+import RegisterFamiliaModal from '@/components/RegisterFamiliaModal.vue'
 
 const auth = useAuthStore()
 const router = useRouter()
 
 const isLoading = ref(false)
 const error = ref('')
+const showRegisterModal = ref(false)
 
-async function quickLogin(email) {
+const form = reactive({
+  email: '',
+  password: '',
+  tenant_slug: 'escola-demo' // Default tenant
+})
+
+async function login() {
   if (isLoading.value) return
   
   isLoading.value = true
@@ -85,9 +125,9 @@ async function quickLogin(email) {
   
   try {
     await auth.login({
-      email,
-      password: 'password123',
-      tenant_slug: 'escola-demo'
+      email: form.email,
+      password: form.password,
+      tenant_slug: form.tenant_slug
     })
     
     // Redirigir segons el rol
@@ -106,6 +146,16 @@ async function quickLogin(email) {
     error.value = err.message || 'Error d\'autenticació'
   } finally {
     isLoading.value = false
+  }
+}
+
+function handleRegistered(data) {
+  showRegisterModal.value = false
+  // Mostrar missatge d'èxit i preparar login automàtic
+  error.value = ''
+  // Podriem emplenar automàticament l'email al formulari
+  if (data.user && data.user.email) {
+    form.email = data.user.email
   }
 }
 </script>

@@ -32,11 +32,8 @@ const User = sequelize.define('User', {
     }
   },
   password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      len: [6, 100]
-    }
+    type: DataTypes.TEXT,
+    allowNull: false
   },
   role: {
     type: DataTypes.ENUM('FAMILIA', 'MONITOR', 'ADMIN_CENTRE', 'SUPER_ADMIN'),
@@ -56,6 +53,24 @@ const User = sequelize.define('User', {
     allowNull: true,
     validate: {
       len: [9, 15]
+    }
+  },
+  dni: {
+    type: DataTypes.STRING(20),
+    allowNull: true,
+    validate: {
+      is: /^[0-9XYZ][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]$/i
+    }
+  },
+  school: {
+    type: DataTypes.STRING(100),
+    allowNull: true
+  },
+  iban: {
+    type: DataTypes.STRING(34),
+    allowNull: true,
+    validate: {
+      is: /^ES\d{22}$/
     }
   },
   profile_data: {

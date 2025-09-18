@@ -38,9 +38,44 @@ const registerSchema = Joi.object({
   })
 });
 
+const registerFamiliaSchema = Joi.object({
+  name: Joi.string().trim().min(2).max(100).required().messages({
+    'string.min': 'El nom ha de tenir mínim 2 caràcters',
+    'string.max': 'El nom no pot superar els 100 caràcters',
+    'any.required': 'Nom és obligatori'
+  }),
+  dni: Joi.string().trim().min(8).max(12).required().messages({
+    'string.min': 'El DNI/NIE ha de tenir mínim 8 caràcters',
+    'string.max': 'El DNI/NIE no pot superar els 12 caràcters',
+    'any.required': 'DNI/NIE és obligatori'
+  }),
+  school: Joi.string().trim().required().messages({
+    'any.required': 'Escola/Centre és obligatori'
+  }),
+  email: Joi.string().trim().email().required().messages({
+    'string.email': 'Format d\'email invàlid',
+    'any.required': 'Email és obligatori'
+  }),
+  password: Joi.string().min(6).required().messages({
+    'string.min': 'La contrasenya ha de tenir mínim 6 caràcters',
+    'any.required': 'Contrasenya és obligatòria'
+  }),
+  phone: Joi.string().trim().min(9).max(15).required().messages({
+    'string.min': 'El telèfon ha de tenir mínim 9 dígits',
+    'string.max': 'El telèfon no pot superar els 15 dígits',
+    'any.required': 'Telèfon és obligatori'
+  }),
+  iban: Joi.string().trim().allow('', null).optional().messages({
+    'string.base': 'L\'IBAN ha de ser text'
+  }),
+  tenant_slug: Joi.string().required().messages({
+    'any.required': 'Codi del centre és obligatori'
+  })
+}).options({ stripUnknown: true });
+
 // Imports per login
 const { User, Tenant } = require('../models');
-const { Op, sequelize } = require('sequelize');
+const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -118,7 +153,7 @@ const login = async (req, res) => {
     
     // Verificar password
     const validPassword = await bcrypt.compare(password, user.password);
-    console.log('🔑 PASSWORD VÀLID:', validPassword);
+    console.log('🔑 LOGIN - PASSWORD VÀLID:', validPassword);
     
     if (!validPassword) {
       console.log('❌ PASSWORD INCORRECTE per usuari:', user.email);
@@ -145,19 +180,19 @@ const login = async (req, res) => {
     res.json({
       success: true,
       message: 'Login exitós',
-      data: {
-        token,
-        user: {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          role: user.role
-        },
-        tenant: {
-          id: tenant.id,
-          name: tenant.name,
-          slug: tenant.slug
-        }
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        school: user.school || null,
+        tenant_id: user.tenant_id
+      },
+      tenant: {
+        id: tenant.id,
+        name: tenant.name,
+        slug: tenant.slug
       }
     });
     
@@ -297,6 +332,131 @@ const getCurrentUser = async (req, res) => {
 };
 
 /**
+ * Registre específic per famílies amb validacions simplificades
+ */
+const registerFamilia = async (req, res) => {
+  console.log('📝 REGISTER FAMILIA REQUEST:', { ...req.body, password: '[HIDDEN]' });
+
+  try {
+    // Validar dades
+    const { error, value } = registerFamiliaSchema.validate(req.body);
+    if (error) {
+      console.log('❌ Validació error:', error.details);
+      return res.status(400).json({
+        success: false,
+        message: error.details[0].message
+      });
+    }
+
+    const { name, dni, school, email, password, phone, iban, tenant_slug } = value;
+    
+    // Verificar tenant (o crear per defecte)
+    let tenant = await Tenant.findOne({ 
+      where: { slug: tenant_slug, status: 'active' } 
+    });
+    
+    if (!tenant) {
+      console.log('🏢 Tenant no trobat, usant tenant per defecte');
+      tenant = await Tenant.findOne({ 
+        where: { slug: 'escola-demo', status: 'active' } 
+      });
+      
+      if (!tenant) {
+        return res.status(400).json({
+          success: false,
+          message: 'Centre educatiu no disponible'
+        });
+      }
+    }
+    
+    console.log('🏢 TENANT TROBAT:', tenant.name);
+    
+    // Verificar si l'email ja existeix
+    const existingUser = await User.findOne({ 
+      where: { 
+        email,
+        tenant_id: tenant.id 
+      } 
+    });
+    
+    if (existingUser) {
+      console.log('⚠️ EMAIL JA REGISTRAT:', email);
+      return res.status(409).json({
+        success: false,
+        message: 'Aquest email ja està registrat. Prova de fer login o utilitza un altre email.',
+        field: 'email',
+        suggestion: 'login'
+      });
+    }
+    
+    // Verificar si el DNI ja existeix (utilitzant la nova columna dni)
+    if (dni) {
+      const existingDNI = await User.findOne({ 
+        where: { 
+          dni: dni,
+          tenant_id: tenant.id 
+        } 
+      });
+      
+      if (existingDNI) {
+        console.log('⚠️ DNI JA REGISTRAT:', dni);
+        return res.status(409).json({
+          success: false,
+          message: 'Aquest DNI/NIE ja està registrat. Si ja tens compte, fes login.',
+          field: 'dni',
+          suggestion: 'login'
+        });
+      }
+    }
+    
+    console.log('🔐 PASSWORD HASHEAT AUTOMÀTICAMENT PER SEQUELIZE');
+    
+    // Crear usuari família amb les noves columnes (Sequelize hashearà automàticament)
+    const newUser = await User.create({
+      name,
+      email,
+      password: password, // Sequelize ho hashearà amb els hooks
+      dni: dni || null,
+      school: school || null,
+      phone: phone || null,
+      iban: iban || null,
+      role: 'FAMILIA',
+      tenant_id: tenant.id,
+      active: 1,
+      created_at: new Date(),
+      updated_at: new Date()
+    });
+    
+    console.log('✅ FAMÍLIA REGISTRADA:', newUser.email);
+    
+    res.status(201).json({
+      success: true,
+      message: 'Família registrada amb èxit! Ja pots iniciar sessió.',
+      data: {
+        user: {
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+          role: newUser.role
+        },
+        tenant: {
+          id: tenant.id,
+          name: tenant.name,
+          slug: tenant.slug
+        }
+      }
+    });
+    
+  } catch (error) {
+    console.error('❌ Register familia error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error registrant família. Prova-ho més tard.'
+    });
+  }
+};
+
+/**
  * Logout (invalidar token - client side)
  */
 const logout = async (req, res) => {
@@ -342,9 +502,48 @@ const refreshToken = async (req, res) => {
   }
 };
 
+/**
+ * Debug endpoint per diagnosticar problemes de registre
+ */
+const debugRegisterFamilia = async (req, res) => {
+  console.log('📋 DADES REBUDES DEL FRONTEND:');
+  console.log(JSON.stringify(req.body, null, 2));
+  
+  // Validar camp per camp
+  const fields = ['name', 'dni', 'school', 'email', 'password', 'phone', 'iban', 'tenant_slug'];
+  fields.forEach(field => {
+    console.log(`${field}: "${req.body[field]}" (${typeof req.body[field]})`);
+  });
+  
+  // Test validació schema
+  try {
+    const { error, value } = registerFamiliaSchema.validate(req.body);
+    if (error) {
+      console.log('❌ SCHEMA VALIDATION ERROR:', error.details);
+      res.json({ 
+        received: req.body, 
+        validationError: error.details,
+        message: 'Validation failed - check logs' 
+      });
+    } else {
+      console.log('✅ SCHEMA VALIDATION SUCCESS');
+      res.json({ 
+        received: req.body, 
+        validated: value,
+        message: 'Debug info logged - validation passed' 
+      });
+    }
+  } catch (err) {
+    console.log('💥 SCHEMA ERROR:', err);
+    res.json({ received: req.body, error: err.message });
+  }
+};
+
 module.exports = {
   login,
   register,
+  registerFamilia,
+  debugRegisterFamilia,
   getCurrentUser,
   logout,
   refreshToken

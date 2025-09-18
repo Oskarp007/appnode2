@@ -13,7 +13,7 @@ const api = axios.create({
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    user: null,
+    user: JSON.parse(localStorage.getItem('user') || 'null'),
     token: localStorage.getItem('token') || null,
     tenant: JSON.parse(localStorage.getItem('tenant') || 'null'),
     loading: false,
@@ -38,43 +38,44 @@ export const useAuthStore = defineStore('auth', {
       console.log('🔐 INTENTANT LOGIN:', credentials)
       
       try {
-        const response = await api.post('/auth/login', {
-          email: credentials.email,
-          password: credentials.password,
-          tenant_slug: 'escola-demo'
-        }, {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
           headers: {
+            'Content-Type': 'application/json',
             'X-Tenant-Slug': 'escola-demo'
-          }
+          },
+          body: JSON.stringify({
+            email: credentials.email,
+            password: credentials.password,
+            tenant_slug: 'escola-demo'
+          })
         })
         
-        console.log('📡 RESPOSTA LOGIN:', response.data)
+        const data = await response.json()
+        console.log('📡 RESPOSTA LOGIN:', data)
         
-        if (response.data.success) {
-          this.token = response.data.data.token
-          this.user = response.data.data.user
-          this.tenant = response.data.data.tenant
+        if (data.success && data.token && data.user) {
+          this.token = data.token
+          this.user = data.user
+          this.tenant = data.tenant
           
           // Guardar al localStorage
           localStorage.setItem('token', this.token)
+          localStorage.setItem('user', JSON.stringify(this.user))
           localStorage.setItem('tenant', JSON.stringify(this.tenant))
           
-          // Configurar axios
-          api.defaults.headers.common['Authorization'] = `Bearer ${this.token}`
-          api.defaults.headers.common['X-Tenant-Slug'] = this.tenant.slug
-          
-          console.log('✅ LOGIN EXITÓS - ROL:', this.user.role)
+          console.log('✅ LOGIN EXITÓS - USUARI:', this.user)
           
           // REDIRECCIONAR AUTOMÀTICAMENT SEGONS ROL
           this.redirectUserByRole()
           
           return { success: true }
         } else {
-          throw new Error(response.data.message)
+          throw new Error(data.message || 'Login fallit')
         }
       } catch (error) {
-        console.error('❌ ERROR LOGIN:', error.response?.data || error)
-        this.error = error.response?.data?.message || 'Error de connexió'
+        console.error('❌ ERROR LOGIN:', error)
+        this.error = error.message || 'Error de connexió'
         return { success: false, error: this.error }
       } finally {
         this.loading = false
@@ -117,25 +118,34 @@ export const useAuthStore = defineStore('auth', {
       }
     },
     
-    async initializeAuth() {
-      if (this.token && !this.user) {
+    initializeAuth() {
+      console.log('🔄 Inicialitzant auth des localStorage...')
+      
+      const token = localStorage.getItem('token')
+      const userStr = localStorage.getItem('user')
+      const tenantStr = localStorage.getItem('tenant')
+      
+      if (token && userStr) {
         try {
-          api.defaults.headers.common['Authorization'] = `Bearer ${this.token}`
-          if (this.tenant?.slug) {
-            api.defaults.headers.common['X-Tenant-Slug'] = this.tenant.slug
-          }
+          this.token = token
+          this.user = JSON.parse(userStr)
+          this.tenant = tenantStr ? JSON.parse(tenantStr) : null
           
-          const response = await api.get('/auth/me')
+          console.log('✅ Auth inicialitzat:', {
+            user: this.user?.name,
+            role: this.user?.role,
+            tenant: this.tenant?.name
+          })
           
-          if (response.data.success) {
-            this.user = response.data.data.user
-            return true
-          }
+          return true
         } catch (error) {
-          console.error('❌ Error inicialitzant auth:', error)
+          console.error('❌ Error parsejar dades localStorage:', error)
           this.logout()
+          return false
         }
       }
+      
+      console.log('ℹ️ No hi ha dades d\'auth al localStorage')
       return false
     },
     
@@ -146,11 +156,10 @@ export const useAuthStore = defineStore('auth', {
       this.error = null
       
       localStorage.removeItem('token')
+      localStorage.removeItem('user')
       localStorage.removeItem('tenant')
       
-      delete api.defaults.headers.common['Authorization']
-      delete api.defaults.headers.common['X-Tenant-Slug']
-      
+      console.log('👋 Logout completat')
       router.push('/login')
     }
   }

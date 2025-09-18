@@ -7,6 +7,9 @@ const { requireRole } = require('../middleware/roleCheck');
 // Middleware per verificar que l'usuari és de tipus FAMILIA
 const ensureFamily = requireRole(['FAMILIA']);
 
+// Obtenir dades del dashboard de família
+router.get('/dashboard', ensureFamily, familyController.getDashboardData);
+
 // Obtenir els estudiants de la família
 router.get('/students', ensureFamily, familyController.getMyStudents);
 
@@ -15,5 +18,8 @@ router.get('/students/:studentId', ensureFamily, familyController.getStudentDeta
 
 // Obtenir perfil de la família
 router.get('/profile', ensureFamily, familyController.getProfile);
+
+// Enviar missatge al centre
+router.post('/message', ensureFamily, familyController.enviarMissatge);
 
 module.exports = router;
