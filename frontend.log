@@ -1,0 +1,14 @@
+
+> gestio-escolar-client@0.0.0 dev
+> vite --host 0.0.0.0 --port 5173 --strictPort
+
+
+  VITE v7.1.5  ready in 281 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.0.17:5173/
+  ➜  press h + enter to show help
+[1m[33m[@vue/compiler-sfc][0m[33m `defineEmits` is a compiler macro and no longer needs to be imported.[0m
+
+[1m[33m[@vue/compiler-sfc][0m[33m `defineProps` is a compiler macro and no longer needs to be imported.[0m
+

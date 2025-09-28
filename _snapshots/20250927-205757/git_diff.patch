@@ -1,0 +1,6 @@
+diff --git a/appnode2 b/appnode2
+--- a/appnode2
++++ b/appnode2
+@@ -1 +1 @@
+-Subproject commit 6f8b1e7233478e274c92e38d0dd00a19ff8d18fc
++Subproject commit 6f8b1e7233478e274c92e38d0dd00a19ff8d18fc-dirty

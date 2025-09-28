@@ -1,0 +1,82 @@
+Executing (default): SELECT 1+1 AS result
+✅ Connexió a la base de dades establerta
+🔄 Sincronitzant base de dades...
+Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+Executing (default): PRAGMA INDEX_LIST(`tenants`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+Executing (default): PRAGMA INDEX_LIST(`users`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+Executing (default): PRAGMA INDEX_INFO(`users_role`)
+Executing (default): PRAGMA INDEX_INFO(`users_active`)
+Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+Executing (default): PRAGMA INDEX_LIST(`students`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+Executing (default): PRAGMA INDEX_INFO(`students_status`)
+Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+Executing (default): PRAGMA INDEX_LIST(`student_family`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_2`)
+Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+✅ Base de dades sincronitzada correctament
+✅ Models de base de dades sincronitzats
+🚀 ========================================
+🏫 SISTEMA GESTIÓ ESCOLAR - NODE.JS
+🚀 ========================================
+✅ API listening on 3000
+🌐 URL: http://localhost:3000
+🏥 Health: http://localhost:3000/health
+📡 API: http://localhost:3000/api
+🔌 Socket.IO: Actiu i funcionant
+📊 Environment: development
+💾 Database: SQLite
+🚀 ========================================
+💡 Mode desenvolupament activat
+💡 Frontend esperant a: http://localhost:5173
+[0mGET /health [32m200[0m 3.123 ms - 179[0m

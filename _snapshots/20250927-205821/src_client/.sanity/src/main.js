@@ -1,0 +1,1 @@
+document.getElementById('app').innerHTML = '<h1>✅ Vite Sanity OK</h1>'

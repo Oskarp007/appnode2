@@ -1,0 +1,10 @@
+{
+  "name": "sanity-vite",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --force",
+    "preview": "vite preview --host 127.0.0.1 --port 5173"
+  },
+  "devDependencies": { "vite": "^5.4.10" }
+}

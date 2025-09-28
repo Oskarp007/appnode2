@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "eamodio.gitlens",
+    "mhutchie.git-graph", 
+    "donjayamanne.githistory",
+    "waderyan.gitblame",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "Vue.volar",
+    "ms-vscode.vscode-json"
+  ]
+}

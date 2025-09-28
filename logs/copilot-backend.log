@@ -1,0 +1,2427 @@
+
+> gestio-escolar-nodejs@1.0.0 predev
+> lsof -ti :3000 | xargs -r kill -9 || true && lsof -ti :5173 | xargs -r kill -9 || true
+
+
+> gestio-escolar-nodejs@1.0.0 dev
+> npm run predev && concurrently "npm run server:dev" "npm run client:dev"
+
+
+> gestio-escolar-nodejs@1.0.0 predev
+> lsof -ti :3000 | xargs -r kill -9 || true && lsof -ti :5173 | xargs -r kill -9 || true
+
+[1] 
+[1] > gestio-escolar-nodejs@1.0.0 client:dev
+[1] > cd client && vite --host 0.0.0.0 --port 5173 --strictPort
+[1] 
+[0] 
+[0] > gestio-escolar-nodejs@1.0.0 server:dev
+[0] > PORT=3000 nodemon server.js
+[0] 
+[0] [33m[nodemon] 3.1.10[39m
+[0] [33m[nodemon] to restart at any time, enter `rs`[39m
+[0] [33m[nodemon] watching path(s): *.*[39m
+[0] [33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[1] 
+[1]   VITE v7.1.5  ready in 290 ms
+[1] 
+[1]   ➜  Local:   http://localhost:5173/
+[1]   ➜  Network: http://192.168.0.19:5173/
+[0] Executing (default): SELECT 1+1 AS result
+[0] ✅ Connexió a la base de dades establerta
+[0] 🔄 Sincronitzant base de dades...
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+[0] Executing (default): PRAGMA INDEX_LIST(`tenants`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+[0] Executing (default): PRAGMA INDEX_LIST(`users`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_role`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_active`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+[0] Executing (default): PRAGMA INDEX_LIST(`students`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_status`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_dni_nie`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_poblacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_curs_actual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_necessitats_educatives_especials`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_te_beca`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tipus_beca`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+[0] Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_dni_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_hash_fitxer`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+[0] ✅ Base de dades sincronitzada correctament
+[0] ✅ Models de base de dades sincronitzats
+[0] 🚀 ========================================
+[0] 🏫 SISTEMA GESTIÓ ESCOLAR - NODE.JS
+[0] 🚀 ========================================
+[0] ✅ API listening on 3000
+[0] 🌐 URL: http://localhost:3000
+[0] 🏥 Health: http://localhost:3000/health
+[0] 📡 API: http://localhost:3000/api
+[0] 🔌 Socket.IO: Actiu i funcionant
+[0] 📊 Environment: development
+[0] 💾 Database: SQLite
+[0] 🚀 ========================================
+[0] 💡 Mode desenvolupament activat
+[0] 💡 Frontend esperant a: http://localhost:5173
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] Executing (default): SELECT 1+1 AS result
+[0] ✅ Connexió a la base de dades establerta
+[0] 🔄 Sincronitzant base de dades...
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+[0] Executing (default): PRAGMA INDEX_LIST(`tenants`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+[0] Executing (default): PRAGMA INDEX_LIST(`users`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_role`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_active`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+[0] Executing (default): PRAGMA INDEX_LIST(`students`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_status`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_dni_nie`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_poblacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_curs_actual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_necessitats_educatives_especials`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_te_beca`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tipus_beca`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+[0] Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_dni_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_hash_fitxer`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+[0] ✅ Base de dades sincronitzada correctament
+[0] ✅ Models de base de dades sincronitzats
+[0] 🚀 ========================================
+[0] 🏫 SISTEMA GESTIÓ ESCOLAR - NODE.JS
+[0] 🚀 ========================================
+[0] ✅ API listening on 3000
+[0] 🌐 URL: http://localhost:3000
+[0] 🏥 Health: http://localhost:3000/health
+[0] 📡 API: http://localhost:3000/api
+[0] 🔌 Socket.IO: Actiu i funcionant
+[0] 📊 Environment: development
+[0] 💾 Database: SQLite
+[0] 🚀 ========================================
+[0] 💡 Mode desenvolupament activat
+[0] 💡 Frontend esperant a: http://localhost:5173
+[0] [0mGET /health [32m200[0m 2.134 ms - 179[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '88',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'coordinador@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: coordinador@edutech.com al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 34.876 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '88',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'coordinador@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: coordinador@edutech.com al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 8.622 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '88',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: admin@gestioescolar.com al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 7.558 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '88',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: admin@gestioescolar.com al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 6.347 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: '$TENANT_SLUG',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: '$TENANT_SLUG'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '89'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: $TENANT_SLUG
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE '$TENANT_SLUG' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: NO TROBAT
+[0] ❌ TENANT NO EXISTEIX: $TENANT_SLUG
+[0] [0mPOST /api/auth/login [33m400[0m 30.864 ms - 70[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@edutech.com',
+[0]   tenant_slug: '$TENANT_SLUG',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: '$TENANT_SLUG'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '83'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: $TENANT_SLUG
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE '$TENANT_SLUG' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: NO TROBAT
+[0] ❌ TENANT NO EXISTEIX: $TENANT_SLUG
+[0] [0mPOST /api/auth/login [33m400[0m 0.957 ms - 70[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'familia@edutech.com',
+[0]   tenant_slug: '$TENANT_SLUG',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'familia@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: '$TENANT_SLUG'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '85'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: $TENANT_SLUG
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE '$TENANT_SLUG' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: NO TROBAT
+[0] ❌ TENANT NO EXISTEIX: $TENANT_SLUG
+[0] [0mPOST /api/auth/login [33m400[0m 1.159 ms - 70[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: '$TENANT_SLUG',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: '$TENANT_SLUG'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '89'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: $TENANT_SLUG
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE '$TENANT_SLUG' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: NO TROBAT
+[0] ❌ TENANT NO EXISTEIX: $TENANT_SLUG
+[0] [0mPOST /api/auth/login [33m400[0m 0.993 ms - 70[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'monitor@edutech.com',
+[0]   tenant_slug: '$TENANT_SLUG',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'monitor@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: '$TENANT_SLUG'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '85'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: $TENANT_SLUG
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE '$TENANT_SLUG' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: NO TROBAT
+[0] ❌ TENANT NO EXISTEIX: $TENANT_SLUG
+[0] [0mPOST /api/auth/login [33m400[0m 1.063 ms - 70[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '88'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Super Admin
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: admin@gestioescolar.com
+[0] [0mPOST /api/auth/login [33m401[0m 45.751 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '82'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Admin Centre
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: admin@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 29.321 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'familia@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'familia@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '84'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'familia@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Família Test
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: familia@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 9.244 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '88'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'coordinador@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Coordinador
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: coordinador@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 2.099 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'monitor@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'monitor@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '84'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'monitor@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Monitor
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: monitor@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 3.079 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '86'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Super Admin
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: admin@gestioescolar.com
+[0] [0mPOST /api/auth/login [33m401[0m 28.332 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@edutech.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '80'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Admin Centre
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: admin@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 3.183 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'familia@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'familia@edutech.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '82'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'familia@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Família Test
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: familia@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 2.409 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '86'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'coordinador@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Coordinador
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: coordinador@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 2.916 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'monitor@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'monitor@edutech.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '82'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'monitor@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Monitor
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: monitor@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 2.243 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '86'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Super Admin
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: admin@gestioescolar.com
+[0] [0mPOST /api/auth/login [33m401[0m 107.900 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@edutech.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '80'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Admin Centre
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: admin@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 74.873 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'familia@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'familia@edutech.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '82'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'familia@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Família Test
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: familia@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 77.581 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '86'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'coordinador@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Coordinador
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: coordinador@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 74.047 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'monitor@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'monitor@edutech.com',
+[0]     password: '$PASSWORD',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '82'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'monitor@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Monitor
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: monitor@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 73.512 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '88'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Super Admin
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@gestioescolar.com
+[0] [0mPOST /api/auth/login [32m200[0m 152.062 ms - 548[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '82'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Admin Centre
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 77.286 ms - 537[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'familia@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'familia@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '84'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'familia@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Família Test
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: familia@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 74.196 ms - 531[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '88'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'coordinador@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Coordinador
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: coordinador@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 76.345 ms - 548[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'monitor@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'monitor@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '84'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'monitor@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Monitor
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: monitor@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 73.381 ms - 525[0m
+[1] npm run client:dev exited with code 143
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'familia@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'familia@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '84',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'familia@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Família Test
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: familia@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 111.629 ms - 531[0m
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' WHERE `User`.`id` IS NULL AND `User`.`active` = 1 LIMIT 1;
+[0] Executing (default): UPDATE `users` SET `last_login`=$1,`updated_at`=$2 WHERE `id` IS NULL
+[0] [0mGET /api/auth/me [33m404[0m 38.351 ms - 46[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestio-escolar.local',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestio-escolar.local',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '91',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestio-escolar.local' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: admin@gestio-escolar.local al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 69.009 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.local',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestioescolar.local',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '90',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.local' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: admin@gestioescolar.local al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 24.947 ms - 88[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] Executing (default): SELECT 1+1 AS result
+[0] ✅ Connexió a la base de dades establerta
+[0] 🔄 Sincronitzant base de dades...
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+[0] Executing (default): PRAGMA INDEX_LIST(`tenants`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+[0] Executing (default): PRAGMA INDEX_LIST(`users`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_role`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_active`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+[0] Executing (default): PRAGMA INDEX_LIST(`students`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_status`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_dni_nie`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_poblacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_curs_actual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_necessitats_educatives_especials`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_te_beca`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tipus_beca`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+[0] Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_dni_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_hash_fitxer`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+[0] ✅ Base de dades sincronitzada correctament
+[0] ✅ Models de base de dades sincronitzats
+[0] 🚀 ========================================
+[0] 🏫 SISTEMA GESTIÓ ESCOLAR - NODE.JS
+[0] 🚀 ========================================
+[0] ✅ API listening on 3000
+[0] 🌐 URL: http://localhost:3000
+[0] 🏥 Health: http://localhost:3000/health
+[0] 📡 API: http://localhost:3000/api
+[0] 🔌 Socket.IO: Actiu i funcionant
+[0] 📊 Environment: development
+[0] 💾 Database: SQLite
+[0] 🚀 ========================================
+[0] 💡 Mode desenvolupament activat
+[0] 💡 Frontend esperant a: http://localhost:5173
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.local',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestioescolar.local',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '90',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.local' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: admin@gestioescolar.local al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 38.414 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.local',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestioescolar.local',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '90',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.local' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: admin@gestioescolar.local al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 7.241 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '82',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Admin Centre
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 113.711 ms - 537[0m
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' WHERE `User`.`id` IS NULL AND `User`.`active` = 1 LIMIT 1;
+[0] Executing (default): UPDATE `users` SET `last_login`=$1,`updated_at`=$2 WHERE `id` IS NULL
+[0] [0mGET /api/auth/me [33m404[0m 15.980 ms - 46[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '88',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'coordinador@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Coordinador
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: coordinador@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 84.253 ms - 548[0m
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' WHERE `User`.`id` IS NULL AND `User`.`active` = 1 LIMIT 1;
+[0] Executing (default): UPDATE `users` SET `last_login`=$1,`updated_at`=$2 WHERE `id` IS NULL
+[0] [0mGET /api/auth/me [33m404[0m 12.800 ms - 46[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'monitor@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'monitor@edutech.com',
+[0]     password: 'monitor123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '83',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'monitor@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Monitor
+[0] 🔑 PASSWORD VÀLID: false
+[0] ❌ PASSWORD INCORRECTE per usuari: monitor@edutech.com
+[0] [0mPOST /api/auth/login [33m401[0m 111.978 ms - 52[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'monitor@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'monitor@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '84',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'monitor@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Monitor
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: monitor@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 112.119 ms - 525[0m
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' WHERE `User`.`id` IS NULL AND `User`.`active` = 1 LIMIT 1;
+[0] Executing (default): UPDATE `users` SET `last_login`=$1,`updated_at`=$2 WHERE `id` IS NULL
+[0] [0mGET /api/auth/me [33m404[0m 9.130 ms - 46[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'familia@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'familia@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '84',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'familia@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Família Test
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: familia@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 95.737 ms - 531[0m
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' WHERE `User`.`id` IS NULL AND `User`.`active` = 1 LIMIT 1;
+[0] Executing (default): UPDATE `users` SET `last_login`=$1,`updated_at`=$2 WHERE `id` IS NULL
+[0] [0mGET /api/auth/me [33m404[0m 9.059 ms - 46[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestio-escolar.local',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestio-escolar.local',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '91',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestio-escolar.local' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: admin@gestio-escolar.local al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 5.892 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestio-escolar.local',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestio-escolar.local',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '91',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestio-escolar.local' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: admin@gestio-escolar.local al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 5.688 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestio-escolar.local',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestio-escolar.local',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '91',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestio-escolar.local' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: NO TROBAT
+[0] ❌ USUARI NO EXISTEIX: admin@gestio-escolar.local al tenant: Escola Europa Demo
+[0] [0mPOST /api/auth/login [33m401[0m 4.479 ms - 88[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '88'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Super Admin
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@gestioescolar.com
+[0] [0mPOST /api/auth/login [32m200[0m 142.109 ms - 548[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '82'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Admin Centre
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 81.857 ms - 537[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'familia@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'familia@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '84'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'familia@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Família Test
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: familia@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 75.190 ms - 531[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '88'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'coordinador@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Coordinador
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: coordinador@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 73.413 ms - 548[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'monitor@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'monitor@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '84'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'monitor@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Monitor
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: monitor@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 73.409 ms - 525[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '88'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Super Admin
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@gestioescolar.com
+[0] [0mPOST /api/auth/login [32m200[0m 83.817 ms - 548[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'admin@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '82'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Admin Centre
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 87.686 ms - 537[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'familia@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'familia@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '84'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'familia@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Família Test
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: familia@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 76.940 ms - 531[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'coordinador@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'coordinador@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '88'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'coordinador@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Coordinador
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: coordinador@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 75.476 ms - 548[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'monitor@edutech.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: undefined,
+[0]   body: {
+[0]     email: 'monitor@edutech.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     'user-agent': 'curl/8.7.1',
+[0]     accept: '*/*',
+[0]     'content-type': 'application/json',
+[0]     'content-length': '84'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'monitor@edutech.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Monitor
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: monitor@edutech.com
+[0] [0mPOST /api/auth/login [32m200[0m 72.932 ms - 525[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '88',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Super Admin
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@gestioescolar.com
+[0] [0mPOST /api/auth/login [32m200[0m 101.144 ms - 548[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] Executing (default): SELECT 1+1 AS result
+[0] ✅ Connexió a la base de dades establerta
+[0] 🔄 Sincronitzant base de dades...
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+[0] Executing (default): PRAGMA INDEX_LIST(`tenants`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+[0] Executing (default): PRAGMA INDEX_LIST(`users`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_role`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_active`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+[0] Executing (default): PRAGMA INDEX_LIST(`students`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_status`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_dni_nie`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_poblacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_curs_actual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_necessitats_educatives_especials`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_te_beca`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tipus_beca`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+[0] Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_dni_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_hash_fitxer`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+[0] ✅ Base de dades sincronitzada correctament
+[0] ✅ Models de base de dades sincronitzats
+[0] 🚀 ========================================
+[0] 🏫 SISTEMA GESTIÓ ESCOLAR - NODE.JS
+[0] 🚀 ========================================
+[0] ✅ API listening on 3000
+[0] 🌐 URL: http://localhost:3000
+[0] 🏥 Health: http://localhost:3000/health
+[0] 📡 API: http://localhost:3000/api
+[0] 🔌 Socket.IO: Actiu i funcionant
+[0] 📊 Environment: development
+[0] 💾 Database: SQLite
+[0] 🚀 ========================================
+[0] 💡 Mode desenvolupament activat
+[0] 💡 Frontend esperant a: http://localhost:5173
+[0] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] Executing (default): SELECT 1+1 AS result
+[0] ✅ Connexió a la base de dades establerta
+[0] 🔄 Sincronitzant base de dades...
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+[0] Executing (default): PRAGMA INDEX_LIST(`tenants`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+[0] Executing (default): PRAGMA INDEX_LIST(`users`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_role`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_active`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+[0] Executing (default): PRAGMA INDEX_LIST(`students`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_status`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_dni_nie`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_poblacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_curs_actual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_necessitats_educatives_especials`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_te_beca`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tipus_beca`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+[0] Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_dni_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_hash_fitxer`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+[0] ✅ Base de dades sincronitzada correctament
+[0] ✅ Models de base de dades sincronitzats
+[0] 🚀 ========================================
+[0] 🏫 SISTEMA GESTIÓ ESCOLAR - NODE.JS
+[0] 🚀 ========================================
+[0] ✅ API listening on 3000
+[0] 🌐 URL: http://localhost:3000
+[0] 🏥 Health: http://localhost:3000/health
+[0] 📡 API: http://localhost:3000/api
+[0] 🔌 Socket.IO: Actiu i funcionant
+[0] 📊 Environment: development
+[0] 💾 Database: SQLite
+[0] 🚀 ========================================
+[0] 💡 Mode desenvolupament activat
+[0] 💡 Frontend esperant a: http://localhost:5173
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] Executing (default): SELECT 1+1 AS result
+[0] ✅ Connexió a la base de dades establerta
+[0] 🔄 Sincronitzant base de dades...
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+[0] Executing (default): PRAGMA INDEX_LIST(`tenants`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+[0] Executing (default): PRAGMA INDEX_LIST(`users`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_role`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_active`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+[0] Executing (default): PRAGMA INDEX_LIST(`students`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_status`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_dni_nie`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_poblacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_curs_actual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_necessitats_educatives_especials`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_te_beca`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tipus_beca`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+[0] Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_dni_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_hash_fitxer`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+[0] ✅ Base de dades sincronitzada correctament
+[0] ✅ Models de base de dades sincronitzats
+[0] ❌ Port 3000 in use, aborting
+[0] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] node:internal/modules/run_main:74
+[0]   const type = getNearestParentPackageJSONType(mainPath);
+[0]                ^
+[0] 
+[0] Error: Invalid package config /Users/oskarpujol/Desktop/nodeapp/package.json.
+[0]     at shouldUseESMLoader (node:internal/modules/run_main:74:16)
+[0]     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:145:20)
+[0]     at node:internal/main/run_main_module:33:47 {
+[0]   code: 'ERR_INVALID_PACKAGE_CONFIG'
+[0] }
+[0] 
+[0] Node.js v24.4.1
+[0] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] Executing (default): SELECT 1+1 AS result
+[0] ✅ Connexió a la base de dades establerta
+[0] 🔄 Sincronitzant base de dades...
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+[0] Executing (default): PRAGMA INDEX_LIST(`tenants`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+[0] Executing (default): PRAGMA INDEX_LIST(`users`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_role`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_active`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+[0] Executing (default): PRAGMA INDEX_LIST(`students`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_status`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_dni_nie`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_poblacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_curs_actual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_necessitats_educatives_especials`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_te_beca`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tipus_beca`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+[0] Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_dni_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_hash_fitxer`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+[0] ✅ Base de dades sincronitzada correctament
+[0] ✅ Models de base de dades sincronitzats
+[0] 🚀 ========================================
+[0] 🏫 SISTEMA GESTIÓ ESCOLAR - NODE.JS
+[0] 🚀 ========================================
+[0] ✅ API listening on 3000
+[0] 🌐 URL: http://localhost:3000
+[0] 🏥 Health: http://localhost:3000/health
+[0] 📡 API: http://localhost:3000/api
+[0] 🔌 Socket.IO: Actiu i funcionant
+[0] 📊 Environment: development
+[0] 💾 Database: SQLite
+[0] 🚀 ========================================
+[0] 💡 Mode desenvolupament activat
+[0] 💡 Frontend esperant a: http://localhost:5173
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' WHERE `User`.`id` IS NULL AND `User`.`active` = 1 LIMIT 1;
+[0] Executing (default): UPDATE `users` SET `last_login`=$1,`updated_at`=$2 WHERE `id` IS NULL
+[0] [0mGET /api/auth/me [33m404[0m 85.550 ms - 46[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '88',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Super Admin
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@gestioescolar.com
+[0] [0mPOST /api/auth/login [32m200[0m 102.850 ms - 548[0m
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' WHERE `User`.`id` IS NULL AND `User`.`active` = 1 LIMIT 1;
+[0] Executing (default): UPDATE `users` SET `last_login`=$1,`updated_at`=$2 WHERE `id` IS NULL
+[0] [0mGET /api/auth/me [33m404[0m 57.232 ms - 46[0m
+[0] 🔐 LOGIN ATTEMPT: {
+[0]   email: 'admin@gestioescolar.com',
+[0]   tenant_slug: 'escola-demo',
+[0]   tenantSlugFromHeader: 'escola-demo',
+[0]   body: {
+[0]     email: 'admin@gestioescolar.com',
+[0]     password: 'password123',
+[0]     tenant_slug: 'escola-demo'
+[0]   },
+[0]   headers: {
+[0]     host: 'localhost:3000',
+[0]     accept: 'application/json, text/plain, */*',
+[0]     'content-type': 'application/json',
+[0]     'sec-fetch-site': 'same-site',
+[0]     origin: 'http://localhost:5173',
+[0]     'sec-fetch-mode': 'cors',
+[0]     'x-tenant-slug': 'escola-demo',
+[0]     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15',
+[0]     referer: 'http://localhost:5173/',
+[0]     'sec-fetch-dest': 'empty',
+[0]     'content-length': '88',
+[0]     'accept-language': 'es-ES,es;q=0.9',
+[0]     priority: 'u=3, i',
+[0]     'accept-encoding': 'gzip, deflate',
+[0]     connection: 'keep-alive'
+[0]   }
+[0] }
+[0] 🏢 TENANT SLUG A USAR: escola-demo
+[0] Executing (default): SELECT `id`, `name`, `slug`, `domain`, `settings`, `status`, `subscription_plan`, `max_students`, `created_at`, `updated_at` FROM `tenants` AS `Tenant` WHERE `Tenant`.`slug` LIKE 'escola-demo' AND `Tenant`.`status` = 'active' LIMIT 1;
+[0] 🏢 TENANT TROBAT: Escola Europa Demo
+[0] Executing (default): SELECT `User`.`id`, `User`.`tenant_id`, `User`.`name`, `User`.`email`, `User`.`password`, `User`.`role`, `User`.`active`, `User`.`last_login`, `User`.`phone`, `User`.`profile_data`, `User`.`created_at`, `User`.`updated_at`, `tenant`.`id` AS `tenant.id`, `tenant`.`name` AS `tenant.name`, `tenant`.`slug` AS `tenant.slug`, `tenant`.`domain` AS `tenant.domain`, `tenant`.`settings` AS `tenant.settings`, `tenant`.`status` AS `tenant.status`, `tenant`.`subscription_plan` AS `tenant.subscription_plan`, `tenant`.`max_students` AS `tenant.max_students`, `tenant`.`created_at` AS `tenant.created_at`, `tenant`.`updated_at` AS `tenant.updated_at` FROM `users` AS `User` INNER JOIN `tenants` AS `tenant` ON `User`.`tenant_id` = `tenant`.`id` AND `tenant`.`status` = 'active' AND `tenant`.`slug` LIKE 'escola-demo' WHERE `User`.`email` = 'admin@gestioescolar.com' AND `User`.`active` = 1 LIMIT 1;
+[0] 👤 USUARI TROBAT: Super Admin
+[0] 🔑 PASSWORD VÀLID: true
+[0] ✅ LOGIN EXITÓS: admin@gestioescolar.com
+[0] [0mPOST /api/auth/login [32m200[0m 95.259 ms - 548[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] Executing (default): SELECT 1+1 AS result
+[0] ✅ Connexió a la base de dades establerta
+[0] 🔄 Sincronitzant base de dades...
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+[0] Executing (default): PRAGMA INDEX_LIST(`tenants`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+[0] Executing (default): PRAGMA INDEX_LIST(`users`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_role`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_active`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+[0] Executing (default): PRAGMA INDEX_LIST(`students`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_status`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_dni_nie`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_poblacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_curs_actual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_necessitats_educatives_especials`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_te_beca`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tipus_beca`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+[0] Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_dni_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_hash_fitxer`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+[0] ✅ Base de dades sincronitzada correctament
+[0] ✅ Models de base de dades sincronitzats
+[0] ❌ Port 3000 in use, aborting
+[0] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node server.js`[39m
+[0] Executing (default): SELECT 1+1 AS result
+[0] ✅ Connexió a la base de dades establerta
+[0] 🔄 Sincronitzant base de dades...
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='tenants';
+[0] Executing (default): PRAGMA INDEX_LIST(`tenants`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_tenants_3`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_slug`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_domain`)
+[0] Executing (default): PRAGMA INDEX_INFO(`tenants_status`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+[0] Executing (default): PRAGMA INDEX_LIST(`users`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_email_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_role`)
+[0] Executing (default): PRAGMA INDEX_INFO(`users_active`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='students';
+[0] Executing (default): PRAGMA INDEX_LIST(`students`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_students_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_class_group`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_status`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_academic_year`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_student_code`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_dni_nie`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_poblacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_curs_actual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_necessitats_educatives_especials`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_te_beca`)
+[0] Executing (default): PRAGMA INDEX_INFO(`students_tipus_beca`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_family';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_family_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_student_family`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_user_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_family_is_primary_contact`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='persones_autoritzades';
+[0] Executing (default): PRAGMA INDEX_LIST(`persones_autoritzades`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_persones_autoritzades_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_dni_per_tenant`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_telefon_principal`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_prioritat_contacte`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_autoritzat_recollir`)
+[0] Executing (default): PRAGMA INDEX_INFO(`persones_autoritzades_dni_nie_tenant_id`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_documents';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_documents`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_documents_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_tipus_document`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_estat_verificacio`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_data_caducitat`)
+[0] Executing (default): PRAGMA INDEX_INFO(`unique_hash_fitxer`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_uploaded_by`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_visible_familia`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_documents_hash_fitxer`)
+[0] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='student_medical';
+[0] Executing (default): PRAGMA INDEX_LIST(`student_medical`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_1`)
+[0] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_student_medical_2`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_student_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_tenant_id`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_te_allergies`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_pren_medicacio_habitual`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_dieta_especial`)
+[0] Executing (default): PRAGMA INDEX_INFO(`student_medical_darrera_revisio_medica`)
+[0] ✅ Base de dades sincronitzada correctament
+[0] ✅ Models de base de dades sincronitzats
+[0] 🚀 ========================================
+[0] 🏫 SISTEMA GESTIÓ ESCOLAR - NODE.JS
+[0] 🚀 ========================================
+[0] ✅ API listening on 3000
+[0] 🌐 URL: http://localhost:3000
+[0] 🏥 Health: http://localhost:3000/health
+[0] 📡 API: http://localhost:3000/api
+[0] 🔌 Socket.IO: Actiu i funcionant
+[0] 📊 Environment: development
+[0] 💾 Database: SQLite
+[0] 🚀 ========================================
+[0] 💡 Mode desenvolupament activat
+[0] 💡 Frontend esperant a: http://localhost:5173

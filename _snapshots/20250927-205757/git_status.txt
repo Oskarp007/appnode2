@@ -1,0 +1,42 @@
+On branch feature/configuracions-sistema
+Your branch is behind 'origin/feature/configuracions-sistema' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   .DS_Store
+	new file:   .env
+	modified:   .gitignore
+	new file:   .specstory/.DS_Store
+	modified:   .specstory/.gitignore
+	modified:   ".specstory/history/2025-09-16_12-58Z-creaci\303\263n-de-backup-completo-del-sistema.md"
+	new file:   .vscode/extensions.json
+	new file:   .vscode/settings.json
+	new file:   appnode2
+	new file:   backend.log
+	new file:   backup/.DS_Store
+	new file:   backup/20250916-150104/databases/database.sqlite
+	new file:   chat.json
+	new file:   client/.env
+	new file:   client/.vscode/extensions.json
+	new file:   client/database.sqlite
+	deleted:    client/tailwind.config.js
+	modified:   client/vite.config.js
+	new file:   database.sqlite
+	new file:   features/.DS_Store
+	new file:   fix-mime.sh
+	new file:   fix-vite.sh
+	new file:   frontend.log
+	new file:   logs/copilot-backend.log
+	new file:   server.log
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+	modified:   appnode2 (modified content, untracked content)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	_snapshots/
+
